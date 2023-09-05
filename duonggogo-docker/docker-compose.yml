@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: awesome-mysql
+    image: mysql/mysql-server:8.0.23
+    command: "mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+    environment:
+      MYSQL_DATABASE: golang_gin_db
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "13306:3306"
+  redis:
+    container_name: awesome-redis
+    image: redis:5.0.6-alpine
+    ports:
+      - "16379:6379"
+  rabbitmq:
+    container_name: awesome-rabbit
+    image: rabbitmq:3.12-alpine
+    ports:
+      - "15672:5672"
